@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/topicListFragment">
+
+    <fragment
+        android:id="@+id/topicListFragment"
+        android:name="com.inhouse.pocboxandroid.topiclist.TopicListFragment"
+        android:label="TopicListFragment"
+        tools:layout="@layout/topic_list_item">
+
+        <action
+            android:id="@+id/action_topicListFragment_to_topicImageSliderFragment"
+            app:destination="@id/topicImageSliderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_topicListFragment_to_topicDetailFragment"
+            app:destination="@id/topicDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicDetailFragment"
+        android:name="com.inhouse.pocboxandroid.topics.topicdetail.TopicDetailFragment"
+        android:label="fragment_topic_detail"
+        tools:layout="@layout/fragment_topic_detail" />
+
+    <fragment
+        android:id="@+id/topicImageSliderFragment"
+        android:name="com.inhouse.pocboxandroid.topics.image_slider.ImageSliderFragment"
+        android:label="fragment_topic_image_slider"
+        tools:layout="@layout/fragment_image_slider" />
+</navigation>
