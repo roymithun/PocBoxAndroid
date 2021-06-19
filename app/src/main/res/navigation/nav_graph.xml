@@ -24,9 +24,9 @@
     </fragment>
     <fragment
         android:id="@+id/topicDetailFragment"
-        android:name="com.inhouse.pocboxandroid.topics.topicdetail.TopicDetailFragment"
+        android:name="com.inhouse.pocboxandroid.topics.tone_generator.ToneGeneratorFragment"
         android:label="fragment_topic_detail"
-        tools:layout="@layout/fragment_topic_detail" />
+        tools:layout="@layout/fragment_tone_generator" />
 
     <fragment
         android:id="@+id/topicImageSliderFragment"

@@ -49,11 +49,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
-    // unit testing
-    testImplementation "junit:junit:$version_junit"
-    androidTestImplementation "androidx.test.ext:junit:$version_junit_anroidx"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
-
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$version_nav"
     implementation "androidx.navigation:navigation-ui-ktx:$version_nav"
@@ -70,4 +65,19 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
 //    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+    implementation "io.reactivex.rxjava3:rxjava:3.0.12"
+
+    // unit testing
+    testImplementation "org.mockito:mockito-core:$version_mockito"
+    testImplementation "org.mockito:mockito-inline:$version_mockito"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$version_junit"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation "androidx.test:runner:$version_androidx_test"
+    androidTestImplementation "androidx.test:core-ktx:$version_androidx_test"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
+    androidTestImplementation "androidx.test:rules:$version_androidx_test"
 }
