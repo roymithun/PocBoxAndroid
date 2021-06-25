@@ -45,6 +45,7 @@ class TopicListFragment : BaseFragment() {
                     when (it) {
                         0 -> TopicListFragmentDirections.actionTopicListFragmentToTopicImageSliderFragment()
                         1 -> TopicListFragmentDirections.actionTopicListFragmentToNotificationFragment()
+                        2 -> TopicListFragmentDirections.actionTopicListFragmentToTestDownloadFragment()
                         else -> null
                     }
                 action?.let { findNavController().navigate(action) }
@@ -57,8 +58,9 @@ class TopicListFragment : BaseFragment() {
         val topics: ArrayList<Topic> = ArrayList()
         topics.add(Topic("Image Slider", 0))
         topics.add(Topic("Notifications", 1))
-        topics.add(Topic("Tone Generator", 2))
-        topics.add(Topic("Signature Pad", 3))
+        topics.add(Topic("Download Test", 2))
+//        topics.add(Topic("Tone Generator", 2))
+//        topics.add(Topic("Signature Pad", 3))
         return topics
     }
 }

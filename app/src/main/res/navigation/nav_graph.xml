@@ -26,6 +26,9 @@
             app:destination="@id/notificationFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_topicListFragment_to_testDownloadFragment"
+            app:destination="@id/testDownloadFragment" />
     </fragment>
     <fragment
         android:id="@+id/topicDetailFragment"
@@ -43,4 +46,9 @@
         android:name="com.inhouse.pocboxandroid.topics.notifications.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/testDownloadFragment"
+        android:name="com.inhouse.pocboxandroid.topics.download_manager.TestDownloadFragment"
+        android:label="fragment_test_download"
+        tools:layout="@layout/fragment_test_download" />
 </navigation>
