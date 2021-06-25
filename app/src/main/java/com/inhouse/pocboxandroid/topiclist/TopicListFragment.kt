@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -42,17 +41,12 @@ class TopicListFragment : BaseFragment() {
         topicListViewModel.navigationIdx.observe(viewLifecycleOwner, {
             it?.let {
                 Log.d(TAG, "navigationIdx = $it")
-                var action: NavDirections? = null
-                when (it) {
-                    0 -> {
-                        action =
-                            TopicListFragmentDirections.actionTopicListFragmentToTopicImageSliderFragment()
+                val action: NavDirections? =
+                    when (it) {
+                        0 -> TopicListFragmentDirections.actionTopicListFragmentToTopicImageSliderFragment()
+                        1 -> TopicListFragmentDirections.actionTopicListFragmentToNotificationFragment()
+                        else -> null
                     }
-                    1 -> {
-                        action =
-                            TopicListFragmentDirections.actionTopicListFragmentToTopicDetailFragment()
-                    }
-                }
                 action?.let { findNavController().navigate(action) }
                 topicListViewModel.doneNavigation()
             }
@@ -62,8 +56,9 @@ class TopicListFragment : BaseFragment() {
     private fun getTopics(): List<Topic> {
         val topics: ArrayList<Topic> = ArrayList()
         topics.add(Topic("Image Slider", 0))
-        topics.add(Topic("Tone Generator", 1))
-        topics.add(Topic("Signature Pad", 2))
+        topics.add(Topic("Notifications", 1))
+        topics.add(Topic("Tone Generator", 2))
+        topics.add(Topic("Signature Pad", 3))
         return topics
     }
 }
