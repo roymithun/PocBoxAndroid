@@ -1,6 +1,7 @@
 package com.inhouse.pocboxandroid.topics.notifications
 
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
+import com.inhouse.pocboxandroid.MainActivity
 import com.inhouse.pocboxandroid.R
 import com.inhouse.pocboxandroid.databinding.FragmentNotificationBinding
 
@@ -53,6 +55,9 @@ class NotificationFragment : Fragment() {
         }
         binding.btnShowBlueNotification.setOnClickListener {
             createBlueNotification()
+        }
+        binding.btnShowBlueNotificationWithTap.setOnClickListener {
+            createBlueNotificationWithAction()
         }
         binding.btnOpenBlueNotificationChannelSettings.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -104,7 +109,7 @@ class NotificationFragment : Fragment() {
 
     private fun createBlueNotification() {
         val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID_BLUE)
-            .setSmallIcon(R.drawable.poc)
+            .setSmallIcon(R.drawable.poc_icon)
             .setContentTitle("Blue Notification Test")
             .setContentText("This is a blue notification test with small text.")
             .setStyle(
@@ -118,9 +123,29 @@ class NotificationFragment : Fragment() {
         }
     }
 
+    private fun createBlueNotificationWithAction() {
+        // Create an explicit intent for an Activity in your app
+        val intent = Intent(requireContext(), MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, 0)
+
+        val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID_BLUE)
+            .setSmallIcon(R.drawable.poc_icon)
+            .setContentTitle("My notification")
+            .setContentText("Hello World!")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            // Set the intent that will fire when the user taps the notification
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+        with(NotificationManagerCompat.from(requireContext())) {
+            notify(12345, builder.build())
+        }
+    }
+
     private fun createRedNotification() {
         val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID_RED)
-            .setSmallIcon(R.drawable.poc)
+            .setSmallIcon(R.drawable.poc_icon)
             .setContentTitle("Red Notification Test")
             .setContentText("This is a red notification test with small text.")
             .setStyle(

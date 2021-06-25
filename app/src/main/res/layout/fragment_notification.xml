@@ -46,6 +46,12 @@
                 android:text="Show Blue Notification" />
 
             <Button
+                android:id="@+id/btn_show_blue_notification_with_tap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Blue Notification With Tap Action" />
+
+            <Button
                 android:id="@+id/btn_open_blue_notification_channel_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
